@@ -83,7 +83,7 @@ end
 
 function criarBotao() 
 	button1 = display.newRect(50, 35, 90, 70)
-    button1:setFillColor(0, 0, 0)
+    button1:setFillColor(50,153,204,1)
  
 	button2 = display.newRect(150, 35, 90, 70)
 	button2:setFillColor(0, 0, 0)
@@ -212,10 +212,25 @@ function eventoBotao()
 	button8:addEventListener("touch", button8)
     button9:addEventListener("touch", button9)
 end
+
+
 function inteligencia()
     math.randomseed(os.time())
-    local random = math.random(1, 9 )
-    tabuleiro:realizarJogada(random, jogador)
-    print(random)
+    
+    
+    local retorno = false
+    local random = math.random(1, 9)
+
+    while retorno == false do
+    retorno = tabuleiro:realizarJogada(random, jogador)
+    print(retorno)    
+    random = math.random(1, 9)
+    end
+     
+     
+    verificarJogo()
+
+   
+
 end
 novoJogo()
